@@ -87,6 +87,69 @@ This section details key parameters tuned for four RTKlib positioning algorithms
 
 
 # 2 Strengths and Limitations
+### 1. DGPS (Differential GPS)
+**Strengths:**
+- **Flexibility:** Can be used in various environments with different base station configurations.
+- **Robustness:** Provides improved accuracy over standalone GPS by correcting errors.
+- **Ease of Use:** Relatively straightforward to implement with existing infrastructure.
+
+**Limitations:**
+- **Computational Efficiency:** Requires additional processing to handle differential corrections.
+- **Lack of Specific Features:** May not provide the precision needed for high-accuracy applications compared to RTK or PPP.
+
+### 2. Kinematic (EKF - Extended Kalman Filter)
+**Strengths:**
+- **Flexibility:** Adaptable to different motion models and sensor inputs.
+- **Robustness:** Can handle dynamic environments and varying motion states.
+- **Ease of Use:** Widely used with extensive documentation and community support.
+
+**Limitations:**
+- **Computational Efficiency:** Computationally intensive due to the recursive nature of the filter.
+- **Lack of Specific Features:** May require significant tuning for optimal performance in specific scenarios.
+
+### 3. PPP Kinematic (Precise Point Positioning)
+**Strengths:**
+- **Flexibility:** Does not require a base station, suitable for global applications.
+- **Robustness:** Provides high accuracy with precise satellite data.
+- **Ease of Use:** Can be implemented with a single receiver, reducing infrastructure needs.
+
+**Limitations:**
+- **Computational Efficiency:** High computational demand due to the need for precise satellite corrections.
+- **Lack of Specific Features:** Convergence time can be long, affecting real-time applications.
+
+### 4. Single (Standalone GPS)
+**Strengths:**
+- **Flexibility:** Simple setup with minimal requirements.
+- **Robustness:** Basic level of robustness for general navigation.
+- **Ease of Use:** Easiest to implement with minimal configuration.
+
+**Limitations:**
+- **Computational Efficiency:** Generally efficient but lacks advanced processing.
+- **Lack of Specific Features:** Least accurate, affected by atmospheric and multipath errors.
+
+## Parameter Tuning and Effects
+
+### Parameters Tuned
+- **Kalman Filter Parameters:** Process noise, measurement noise, initial state estimates.
+- **DGPS Correction Parameters:** Correction interval, base station configuration.
+- **PPP Convergence Parameters:** Satellite clock and orbit corrections, ionospheric and tropospheric models.
+
+### Effects of Parameter Changes
+
+#### Accuracy
+- **Kalman Filter:** Tuning process and measurement noise improves state estimation accuracy.
+- **DGPS:** Adjusting correction intervals can enhance positional accuracy.
+- **PPP:** Precise satellite corrections significantly improve accuracy.
+
+#### Processing Speed
+- **Kalman Filter:** Increased complexity in tuning can slow down processing.
+- **DGPS:** Frequent corrections may increase processing load.
+- **PPP:** High precision demands can slow down initial convergence.
+
+#### Robustness
+- **Kalman Filter:** Proper tuning enhances robustness to dynamic changes.
+- **DGPS:** Robustness improves with reliable correction data.
+- **PPP:** Robustness is enhanced with accurate satellite data but may be affected by convergence time.
 
 # 3 Comparison with Other Libraries
 
